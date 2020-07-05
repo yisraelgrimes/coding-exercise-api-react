@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class GroupController extends Controller
+use App\Http\Resources\GroupsCollection;
+use App\Http\Resources\GroupResource;
+use App\Models\Group;
+
+class GroupsController extends Controller
 {
     /**
      * Display a listing of the resource.
