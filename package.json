@@ -12,6 +12,7 @@
     "semantic-ui-react": "^0.87.3"
   },
   "scripts": {
+    "dev": "concurrently \"php artisan serve\" \"yarn start\"",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -33,6 +34,7 @@
     ]
   },
   "devDependencies": {
+    "concurrently": "^5.2.0",
     "enzyme-to-json": "^3.3.5"
   },
   "jest": {
