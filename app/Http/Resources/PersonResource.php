@@ -22,7 +22,6 @@ class PersonResource extends JsonResource
             'email_address' => $this->email_address,
             'status'        => $this->status,
             'group_id'      => $this->group_id,
-            // REVIEW: Possibly remove 'group' key
             'group'         => Group::where('id', $this->group_id)->first(),
             'created_at'    => $this->created_at,
             'updated_at'    => $this->updated_at,

@@ -14,11 +14,11 @@ class PeopleControllerTest extends TestCase
     public function testPersonCreated()
     {
         $expected = [
-            'first_name' => 'Sally',
-            'last_name' => 'Ride',
+            'first_name'    => 'Sally',
+            'last_name'     => 'Ride',
             'email_address' => 'sallyride@nasa.gov',
-            'status' => 'archived',
-            'group_id' => '1',
+            'status'        => 'archived',
+            'group_id'      => '1',
         ];
         $response = $this->json('POST', '/api/people', $expected);
         $response

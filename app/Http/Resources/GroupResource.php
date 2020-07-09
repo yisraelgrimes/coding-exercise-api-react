@@ -16,9 +16,9 @@ class GroupResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id' => $this->id,
+            'id'         => $this->id,
             'group_name' => $this->group_name,
-            'people' => Person::where('group_id', $this->id)->get(),
+            'people'     => Person::where('group_id', $this->id)->get(),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];
