@@ -7,9 +7,9 @@ use Faker\Generator as Faker;
 
 $factory->define(Person::class, function (Faker $faker) {
     return [
-        'first_name' => $faker->firstName,
-        'last_name' => $faker->lastName,
+        'first_name'    => $faker->firstName,
+        'last_name'     => $faker->lastName,
         'email_address' => $faker->email,
-        'status' => (bool)random_int(0, 1) ? 'active' : 'archived'
+        'status'        => (bool)random_int(0, 1) ? 'active' : 'archived'
     ];
 });

@@ -21,6 +21,11 @@ class CreatePeopleTable extends Migration
             $table->enum('status', ['active', 'archived']);
             $table->timestamps();
         });
+
+        Schema::table('people', function (Blueprint $table) {
+            $table->unsignedBigInteger('group_id')->nullable();
+            $table->foreign('group_id')->references('id')->on('groups');
+        });
     }
 
     /**
