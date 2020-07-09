@@ -32,7 +32,10 @@ class GroupsControllerTest extends TestCase
             ->assertStatus(200)
             ->assertJsonStructure([
             'data' => [
-                'group_name'
+                'id',
+                'group_name',
+                'created_at',
+                'updated_at'
             ]
         ]);
     }

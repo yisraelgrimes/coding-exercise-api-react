@@ -17,7 +17,8 @@ class PeopleControllerTest extends TestCase
             'first_name' => 'Sally',
             'last_name' => 'Ride',
             'email_address' => 'sallyride@nasa.gov',
-            'status' => 'archived'
+            'status' => 'archived',
+            'group_id' => '1',
         ];
         $response = $this->json('POST', '/api/people', $expected);
         $response
@@ -34,15 +35,16 @@ class PeopleControllerTest extends TestCase
         $response
             ->assertStatus(200)
             ->assertJsonStructure([
-                'data' => [
-                    'first_name',
-                    'last_name',
-                    'email_address',
-                    'status',
-                    'created_at',
-                    'updated_at'
-                ]
-            ]);
+            'data' => [
+                'first_name',
+                'last_name',
+                'email_address',
+                'status',
+                'group',
+                'created_at',
+                'updated_at'
+            ]
+        ]);
     }
 
     public function testAllPeopleRetrieved()

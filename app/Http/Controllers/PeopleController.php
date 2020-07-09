@@ -18,7 +18,7 @@ class PeopleController extends Controller
      */
     public function index()
     {
-        return new PeopleCollection(Person::all());
+        return new PeopleCollection(Person::with('groups')->get());
     }
 
     /**
@@ -26,10 +26,11 @@ class PeopleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
+    // TODO: Remove unused function
+    // public function create()
+    // {
+    //     //
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -40,10 +41,11 @@ class PeopleController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'first_name'    => 'required|max:255',
-            'last_name'     => 'required|max:255',
+            'first_name' => 'required|max:255',
+            'last_name' => 'required|max:255',
             'email_address' => 'required|email',
-            'status'        => Rule::in(['active', 'archived'])
+            'group_id' => 'required|integer',
+            'status' => Rule::in(['active', 'archived'])
         ]);
 
         $person = Person::create($request->all());
@@ -70,10 +72,11 @@ class PeopleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
-    }
+    // TODO: Remove unused function
+    // public function edit($id)
+    // {
+    //     //
+    // }
 
     /**
      * Update the specified resource in storage.

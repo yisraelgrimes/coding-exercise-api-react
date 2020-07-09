@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Models\Person;
 
 class GroupResource extends JsonResource
 {
@@ -17,6 +18,7 @@ class GroupResource extends JsonResource
         return [
             'id' => $this->id,
             'group_name' => $this->group_name,
+            'people' => Person::where('group_id', $this->id)->get(),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

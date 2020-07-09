@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 use App\Http\Resources\GroupsCollection;
 use App\Http\Resources\GroupResource;
@@ -17,7 +18,7 @@ class GroupsController extends Controller
      */
     public function index()
     {
-        return new GroupsCollection(Group::all());
+        return new GroupsCollection(Group::with('people')->get());
     }
 
     /**
