@@ -1,0 +1,22 @@
+{
+    "extends": "@workwithizzi/eslint-config-react",
+    "rules": {
+      "indent": ["warn", 4],
+      "quotes": ["warn", "double"],
+      "semi": ["warn", "always"],
+      "comma-dangle": [
+        "warn",
+        {
+          "arrays": "always-multiline",
+          "objects": "always-multiline",
+          "imports": "always-multiline",
+          "exports": "always-multiline",
+          "functions": "never"
+        }
+      ],
+      // Warn if not defining `prop-types`
+      // "react/prop-types": 1,
+      "react/react-in-jsx-scope": 1,
+      "react/jsx-filename-extension": [1, { "extensions": [".js"] }]
+    }
+  }
