@@ -49,7 +49,7 @@ function _incorrectField(field, provided) {
 // group record: report any field errors
 function _returnGroupFieldErrors(record) {
     const errorLog = [];
-    if (_emptyString(record.group_name)) {
+    if (string.isEmpty(record.group_name)) {
         errorLog.push(_missingField("group name"));
     }
     return errorLog;
@@ -62,25 +62,25 @@ function _returnPersonFieldErrors(record) {
     const errorLog = [];
 
     // Are first and last names provided?
-    _emptyString(first_name) && errorLog.push(_missingField("first name"));
-    _emptyString(last_name) && errorLog.push(_missingField("last name"));
+    string.isEmpty(first_name) && errorLog.push(_missingField("first name"));
+    string.isEmpty(last_name) && errorLog.push(_missingField("last name"));
 
     // Is email provided?
-    if (_emptyString(email_address)) {
+    if (string.isEmpty(email_address)) {
         errorLog.push(_missingField("email address"));
     } else {
         // Is email format valid?
-        if (!_isEmailValid(email_address)) {
+        if (!string.isEmailValid(email_address)) {
             errorLog.push(_incorrectField("email address", email_address));
         }
     }
 
     // Is status provided?
-    if (_emptyString(status)) {
+    if (string.isEmpty(status)) {
         errorLog.push(`${_missingField("status")} Both "active" and "archived" are possible options.`);
     } else {
         // Does status match one of our 2 choices?
-        const lowerStatus = status.toLowerCase();
+        const lowerStatus = string.lowerCase(status);
         if (lowerStatus !== "active" && lowerStatus !== "archived") {
             errorLog.push(`${_incorrectField("status", status)} Both "active" and "archived" are possible options.`);
         }
@@ -110,32 +110,63 @@ export function validateFile(file) {
 
     // Set up our placeholder for the return object
     const output = {
-        group: { errors: [] },
-        person: { errors: [] },
+        group: { errors: [], fields: {} },
+        person: { errors: [], fields: {} },
     };
 
-    // We'll use this to let the user know that only the first record is being uploaded
-    output.isSingleRecord = data.length === 1;
+    // ::::: Group Record :::::
 
-    // If the record is a group -- bool
-    output.group.validated = "group_name" in record;
+    // If there're columns for group record
+    if ("group_name" in record) {
+        // If csv is a group record, add any errors to an array
+        output.group.errors = _returnGroupFieldErrors(record);
+
+        // If no errors, validate group
+        output.group.validated = output.group.errors.length === 0;
+
+        // If valid record, add fields to object
+        if (output.group.validated) {
+            output.group.fields = {
+                group_name: record.group_name,
+            };
+        }
+    }
+
+    // ::::: Person Record :::::
 
     // If the record is a person -- bool
-    // Only checking the 3 main fields here because if all 3 are missing then
-    // the user definitely isn't trying to upload a person
-    output.person.validated =
+    // Only checking the 3 main fields here because if all 3 are missing
+    // then the user definitely isn't trying to upload a person
+    const personRecord =
         "first_name" in record ||
         "last_name" in record ||
         "email_address" in record;
 
+    // If there're columns for person record
+    if (personRecord) {
+        // If csv is a person record, add any errors to an array
+        output.person.errors = _returnPersonFieldErrors(record);
+
+        // If no errors, validate person
+        output.person.validated = output.person.errors.length === 0;
+
+        // If valid record, add fields to object
+        if (output.person.validated) {
+            output.person.fields = {
+                first_name   : string.titleCase(record.first_name),
+                last_name    : string.titleCase(record.last_name),
+                email_address: record.email_address.toLowerCase(),
+                status       : record.status.toLowerCase(),
+                group_id     : record.group_id,
+            };
+        }
+    }
+
     // If the file doesn't match record-types for group/person
     output.noRecordType = !output.group.validated && !output.person.validated;
 
-    // If csv is a group record, add any errors to an array
-    output.group.errors = _returnGroupFieldErrors(record);
-
-    // If csv is a person record, add any errors to an array
-    output.person.errors = _returnPersonFieldErrors(record);
+    // We'll use this to let the user know that only the first record is being uploaded
+    output.isSingleRecord = data.length === 1;
 
     return output;
 }
