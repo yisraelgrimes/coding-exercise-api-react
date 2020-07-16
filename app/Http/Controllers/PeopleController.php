@@ -33,7 +33,7 @@ class PeopleController extends Controller
             'first_name'    => 'required|max:255',
             'last_name'     => 'required|max:255',
             'email_address' => 'required|email',
-            'group_id'      => 'required|integer',
+            'group_id'      => 'integer',
             'status'        => Rule::in(['active', 'archived'])
         ]);
 
