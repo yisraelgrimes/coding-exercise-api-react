@@ -5,6 +5,7 @@
 // Return example:
 // {
 //     isSingleRecord: true,
+//     noRecordType: false,
 //     group: {
 //         validated: true,
 //         fields: {
@@ -157,8 +158,11 @@ export function validateFile(file) {
                 last_name    : string.titleCase(record.last_name),
                 email_address: record.email_address.toLowerCase(),
                 status       : record.status.toLowerCase(),
-                group_id     : record.group_id,
             };
+            // Only add group_id if it is provided
+            if (record.group_id) {
+                output.person.fields.group_id = record.group_id;
+            }
         }
     }
 
