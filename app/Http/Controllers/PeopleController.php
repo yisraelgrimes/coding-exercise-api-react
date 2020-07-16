@@ -18,7 +18,7 @@ class PeopleController extends Controller
      */
     public function index()
     {
-        return new PeopleCollection(Person::with('groups')->get());
+        return new PeopleCollection(Person::with('group')->get());
     }
 
     /**

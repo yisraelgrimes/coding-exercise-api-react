@@ -22,7 +22,7 @@ export default function PeopleList() {
             try {
                 const response = await axios.get(apiUrl);
                 setContainerState((prevState) => ({
-                    ...containerState,
+                    ...prevState,
                     data: response.data.data,
                 }));
             } catch (error) {
@@ -37,7 +37,7 @@ export default function PeopleList() {
         const { column, data, direction } = containerState;
         if (column !== clickedColumn) {
             setContainerState((prevState) => ({
-                ...containerState,
+                ...prevState,
                 column: clickedColumn,
                 data: _.sortBy(data, [clickedColumn]),
                 direction: "ascending",
@@ -46,7 +46,7 @@ export default function PeopleList() {
         }
 
         setContainerState((prevState) => ({
-            ...containerState,
+            ...prevState,
             data: data.reverse(),
             direction: direction === "ascending" ? "descending" : "ascending",
         }));
@@ -86,7 +86,7 @@ export default function PeopleList() {
                         onClick={() => handleSort("status")}
                         singleLine
                     >
-                    Status
+                        Status
                     </Table.HeaderCell>
                     <Table.HeaderCell
                         sorted={column === "group" ? direction : null}
@@ -100,15 +100,17 @@ export default function PeopleList() {
 
             {data &&
             <Table.Body>
-                {data.map(i => (
-                    <Table.Row key={i.id}>
-                        <Table.Cell singleLine>{ i.first_name }</Table.Cell>
-                        <Table.Cell singleLine>{ i.last_name }</Table.Cell>
-                        <Table.Cell singleLine>{ i.email_address }</Table.Cell>
-                        <Table.Cell singleLine>{ i.status }</Table.Cell>
-                        <Table.Cell singleLine>{ i.group_id }</Table.Cell>
-                    </Table.Row>
-                ))}
+                {data.map(i => {
+                    return (
+                        <Table.Row key={i.id}>
+                            <Table.Cell singleLine>{ i.first_name }</Table.Cell>
+                            <Table.Cell singleLine>{ i.last_name }</Table.Cell>
+                            <Table.Cell singleLine>{ i.email_address }</Table.Cell>
+                            <Table.Cell singleLine>{ i.status }</Table.Cell>
+                            <Table.Cell singleLine>{ i.group_id && i.group.group_name }</Table.Cell>
+                        </Table.Row>
+                    );
+                })}
             </Table.Body>
             }
         </Table>
