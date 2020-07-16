@@ -4,7 +4,6 @@ import _ from "lodash";
 import axios from "axios";
 import { Table } from "semantic-ui-react";
 import { catchErrors } from "./utils/catchErrors";
-import { ImportFile } from "./ImportFile";
 
 const apiUrl = "http://127.0.0.1:8000/api/people";
 
@@ -55,7 +54,7 @@ export default function PeopleList() {
 
     return (
         <>
-        <ImportFile />
+
 
         <Table sortable celled padded>
             <Table.Header>
