@@ -7,12 +7,22 @@
 //     isSingleRecord: true,
 //     group: {
 //         validated: true,
+//         fields: {
+//             name: "Volunteers"
+//         },
 //         errors: [
 //             "Your group_name is missing.",
 //         ],
 //     },
 //     person: {
 //         validated: true,
+//         fields: {
+//             first_name: "Han",
+//             last_name: "Solo",
+//             email_address: "solo_yolo@hotmail.com",
+//             status: "active",
+//             group_id: "1",
+//         },
 //         errorLog: [
 //             "The first_name is missing.",
 //             "Your email is not valid.",
@@ -23,15 +33,7 @@
 //
 // :::::::::::::::::::::::::::::::
 
-// Check a string to make sure it's not blank
-function _emptyString(str) {
-    return (!str || 0 === str.length);
-}
-
-// Validate email format
-function _isEmailValid(email) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
+import { string } from "./utils/strings";
 
 // Feedback if a required field is empty
 function _missingField(field) {
