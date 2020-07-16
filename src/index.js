@@ -1,12 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Container, Header } from "semantic-ui-react";
+import { Container, Header, Tab } from "semantic-ui-react";
 
-import ResultsList from "./ResultsList";
+import { ImportFile } from "./ImportFile";
+import PeopleList from "./PeopleList";
+import GroupsList from "./GroupsList";
+
+const panes = [
+    { menuItem: "People", render: () => <Tab.Pane><PeopleList /></Tab.Pane> },
+    { menuItem: "Groups", render: () => <Tab.Pane><GroupsList /></Tab.Pane> },
+];
 
 const App = ({ children }) => (
     <Container style={{ margin: 20 }}>
-        <Header as="h3"><span role="img" aria-label="logo">⛵️</span> Breeze Church Management </Header>
+        <Header as="h3" floated="left"><span role="img" aria-label="logo">⛵️</span> Breeze Church Management </Header>
+        <ImportFile />
 
         {children}
     </Container>
@@ -19,7 +27,7 @@ document.head.appendChild(styleLink);
 
 ReactDOM.render(
     <App>
-        <ResultsList />
+        <Tab panes={panes} />
     </App>,
     document.getElementById("root")
 );

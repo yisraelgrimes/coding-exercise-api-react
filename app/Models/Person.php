@@ -17,7 +17,7 @@ class Person extends Model
     /**
      * Get the group for a person
      */
-    public function groups()
+    public function group()
     {
         return $this->belongsTo('App\Models\Group');
     }

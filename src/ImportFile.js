@@ -80,7 +80,7 @@ export function ImportFile() {
         >
             {({ file }) => (
                 <>
-                    <Button onClick={_openDialog} animated='fade' primary>
+                    <Button onClick={_openDialog} animated='fade' primary floated="right">
                         <Button.Content visible>Upload</Button.Content>
                         <Button.Content hidden><Icon name='add' /></Button.Content>
                     </Button>
