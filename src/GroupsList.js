@@ -53,8 +53,6 @@ export default function GroupsList() {
     const { column, data, direction } = containerState;
 
     return (
-        <>
-
         <Table sortable celled padded>
             <Table.Header>
                 <Table.Row>
@@ -95,6 +93,7 @@ export default function GroupsList() {
                                                     </List.Item>
                                                 );
                                             }
+                                            return null;
                                         })}
                                     </List>
                                 )}
@@ -105,6 +104,5 @@ export default function GroupsList() {
             </Table.Body>
             }
         </Table>
-        </>
     );
 }

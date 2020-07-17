@@ -24,6 +24,7 @@ export default function PeopleList() {
                     ...prevState,
                     data: response.data.data,
                 }));
+                console.log(response.data.data);
             } catch (error) {
                 catchErrors(error);
             }
@@ -53,9 +54,6 @@ export default function PeopleList() {
     const { column, data, direction } = containerState;
 
     return (
-        <>
-
-
         <Table sortable celled padded>
             <Table.Header>
                 <Table.Row>
@@ -113,6 +111,5 @@ export default function PeopleList() {
             </Table.Body>
             }
         </Table>
-        </>
     );
 }
