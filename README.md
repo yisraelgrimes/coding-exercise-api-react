@@ -60,8 +60,7 @@ id, group_name
   - `cp .env.example .env`
   - Edit .env with your mysql connection information: the following steps connect to local mysql database using root credentials
   - `composer install && php artisan key:generate && php artisan migrate`
-- Start the Laravel API in one Terminal Window: `php artisan serve`
-- Start the React/Node.js server in another Terminal Window: `yarn start`
+- Run `yarn dev` in your Terminal Window to start both the Laravel API and the React/Node.js server at the same time.
 
 
 ### Expected Changes
