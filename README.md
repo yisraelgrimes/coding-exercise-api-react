@@ -84,3 +84,24 @@ We love TDD! So we’d love to see tests for the API and ReactJS application. Wr
 We’re a fully remote team so communication is really important. Be sure to include any instructions needed for any of our team mates to run and test.
 
 Good luck and we'll get back to you once we review it!
+
+
+## App Demo
+
+If you want to test the app, I included several `.csv` files in the `./demo_files` directory that are available to use. They were created to demo and test different features.
+
+Errors:
+- wrong_file.csv
+- person-missing_status.csv
+- person-missing_field.csv
+- person-invalid_email.csv
+
+Warn, but still upload the 1st record:
+- person-multiple_records.csv
+- group-multiple_records.csv
+- group_and_person-multiple.csv (will upload both `group` and `person` record)
+
+Success:
+- person.csv
+- group.csv
+- group_and_person-single.csv (will upload both `group` and `person` record)

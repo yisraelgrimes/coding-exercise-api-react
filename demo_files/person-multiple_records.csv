@@ -1,0 +1,4 @@
+first_name,last_name,email_address,status,group_id
+Darth,Maul,grrrr@icloud.com,active,3
+R2D2,Nope,bleep_bloop@bot.net,active,2
+Han,Solo,solo_yolo@gmail.com,archived,1
