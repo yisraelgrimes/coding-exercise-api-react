@@ -1,10 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ResultsList /> should match the snapshot 1`] = `
+exports[`<PeopleList /> should match the snapshot 1`] = `
 <Table
   as="table"
   celled={true}
   padded={true}
+  sortable={true}
 >
   <TableHeader
     as="thead"
@@ -15,60 +16,48 @@ exports[`<ResultsList /> should match the snapshot 1`] = `
     >
       <TableHeaderCell
         as="th"
+        onClick={[Function]}
         singleLine={true}
+        sorted={null}
       >
         First Name
       </TableHeaderCell>
       <TableHeaderCell
         as="th"
+        onClick={[Function]}
+        singleLine={true}
+        sorted={null}
       >
         Last Name
       </TableHeaderCell>
       <TableHeaderCell
         as="th"
+        onClick={[Function]}
+        singleLine={true}
+        sorted={null}
       >
         Email
       </TableHeaderCell>
       <TableHeaderCell
         as="th"
+        onClick={[Function]}
+        singleLine={true}
+        sorted={null}
       >
         Status
+      </TableHeaderCell>
+      <TableHeaderCell
+        as="th"
+        onClick={[Function]}
+        singleLine={true}
+        sorted={null}
+      >
+        Group
       </TableHeaderCell>
     </TableRow>
   </TableHeader>
   <TableBody
     as="tbody"
-  >
-    <TableRow
-      as="tr"
-      cellAs="td"
-      key="0"
-    >
-      <TableCell
-        as="td"
-        singleLine={true}
-      >
-        Macie
-      </TableCell>
-      <TableCell
-        as="td"
-        singleLine={true}
-      >
-        Emmerich
-      </TableCell>
-      <TableCell
-        as="td"
-        singleLine={true}
-      >
-        cremin.marjory@hotmail.com
-      </TableCell>
-      <TableCell
-        as="td"
-        singleLine={true}
-      >
-        active
-      </TableCell>
-    </TableRow>
-  </TableBody>
+  />
 </Table>
 `;
