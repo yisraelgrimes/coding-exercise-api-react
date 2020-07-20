@@ -29,7 +29,7 @@ export function upperCase(str){
 }
 
 /**
- * UPPERCASE first char of each word.
+ * Convert a string to title-case
  */
 export function titleCase(str){
     return lowerCase(str).replace(/^\w|\s\w/g, upperCase);
