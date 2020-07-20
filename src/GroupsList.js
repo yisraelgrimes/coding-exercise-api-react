@@ -8,7 +8,7 @@ import { catchErrors } from "./utils/catchErrors";
 const apiUrl = "http://127.0.0.1:8000/api/groups";
 
 
-export default function GroupsList() {
+export default function GroupsList({jestData}) {
     const [containerState, setContainerState] = useState({
         column: null,
         data: [],
@@ -52,6 +52,12 @@ export default function GroupsList() {
     };
     const { column, data, direction } = containerState;
 
+    // If we are using Jest, use the 'jestData' prop to load test data
+    let groupsData = data;
+    if (jestData) {
+        groupsData = jestData;
+    }
+
     return (
         <Table sortable celled padded>
             <Table.Header>
@@ -73,10 +79,10 @@ export default function GroupsList() {
                 </Table.Row>
             </Table.Header>
 
-            {data &&
+            {groupsData &&
             <Table.Body>
                 {/* Map through groups */}
-                {data.map(g => {
+                {groupsData.map(g => {
                     return (
                         <Table.Row key={g.id}>
                             <Table.Cell singleLine>{ g.group_name }</Table.Cell>
@@ -89,7 +95,7 @@ export default function GroupsList() {
                                             if (p.status === "active") {
                                                 return (
                                                     <List.Item key={p.id}>
-                                                        {p.first_name} {p.first_name}
+                                                        {p.first_name} {p.last_name}
                                                     </List.Item>
                                                 );
                                             }

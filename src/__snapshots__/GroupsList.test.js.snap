@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<GroupsList /> should match the snapshot 1`] = `
+<Table
+  as="table"
+  celled={true}
+  padded={true}
+  sortable={true}
+>
+  <TableHeader
+    as="thead"
+  >
+    <TableRow
+      as="tr"
+      cellAs="td"
+    >
+      <TableHeaderCell
+        as="th"
+        onClick={[Function]}
+        singleLine={true}
+        sorted={null}
+      >
+        Group Name
+      </TableHeaderCell>
+      <TableHeaderCell
+        as="th"
+        onClick={[Function]}
+        singleLine={true}
+        sorted={null}
+      >
+        People
+      </TableHeaderCell>
+    </TableRow>
+  </TableHeader>
+  <TableBody
+    as="tbody"
+  >
+    <TableRow
+      as="tr"
+      cellAs="td"
+      key="1"
+    >
+      <TableCell
+        as="td"
+        singleLine={true}
+      >
+        Volunteers
+      </TableCell>
+      <TableCell
+        as="td"
+        singleLine={true}
+      >
+        <List>
+          <ListItem
+            key="132"
+          >
+            Macie
+             
+            Emmerich
+          </ListItem>
+        </List>
+      </TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+`;
