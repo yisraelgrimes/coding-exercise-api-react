@@ -8,7 +8,7 @@ import { catchErrors } from "./utils/catchErrors";
 const apiUrl = "http://127.0.0.1:8000/api/people";
 
 
-export default function PeopleList() {
+export default function PeopleList({jestData}) {
     const [containerState, setContainerState] = useState({
         column: null,
         data: [],
@@ -24,7 +24,6 @@ export default function PeopleList() {
                     ...prevState,
                     data: response.data.data,
                 }));
-                console.log(response.data.data);
             } catch (error) {
                 catchErrors(error);
             }
@@ -52,6 +51,12 @@ export default function PeopleList() {
         }));
     };
     const { column, data, direction } = containerState;
+
+    // If we are using Jest, use the 'jestData' prop to load test data
+    let peopleData = data;
+    if (jestData) {
+        peopleData = jestData;
+    }
 
     return (
         <Table sortable celled padded>
@@ -95,9 +100,9 @@ export default function PeopleList() {
                 </Table.Row>
             </Table.Header>
 
-            {data &&
+            {peopleData &&
             <Table.Body>
-                {data.map(i => {
+                {peopleData.map(i => {
                     return (
                         <Table.Row key={i.id}>
                             <Table.Cell singleLine>{ i.first_name }</Table.Cell>

@@ -58,6 +58,41 @@ exports[`<PeopleList /> should match the snapshot 1`] = `
   </TableHeader>
   <TableBody
     as="tbody"
-  />
+  >
+    <TableRow
+      as="tr"
+      cellAs="td"
+      key="132"
+    >
+      <TableCell
+        as="td"
+        singleLine={true}
+      >
+        Macie
+      </TableCell>
+      <TableCell
+        as="td"
+        singleLine={true}
+      >
+        Emmerich
+      </TableCell>
+      <TableCell
+        as="td"
+        singleLine={true}
+      >
+        cremin.marjory@hotmail.com
+      </TableCell>
+      <TableCell
+        as="td"
+        singleLine={true}
+      >
+        active
+      </TableCell>
+      <TableCell
+        as="td"
+        singleLine={true}
+      />
+    </TableRow>
+  </TableBody>
 </Table>
 `;
